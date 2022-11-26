@@ -176,5 +176,161 @@ public class TestApplication {
 
     }
 
+    @Test
+    public void testFindShortestRoute1(){
+
+        setUpStage1();
+
+        String pathExpected [] = new String[]{
+                "BUCKHURST HILL",
+                "WOODFORD",
+                "SOUTH WOODFORD",
+                "SNARESBROOK",
+                "LEYTONSTONE"};
+
+        int numStationExpected = pathExpected.length;
+
+        String from = "BUCKHURST HILL";
+        String to = "LEYTONSTONE";
+
+        Path<Station> path = controller.findShortestRoute(from, to);
+
+        for(int i = 0; i < path.getPath().size(); i++){
+            assertEquals(pathExpected[i], path.getPath().get(i).getName());
+        }
+
+        assertEquals(path.getDistance(), numStationExpected);
+    }
+
+    @Test
+    public void testFindShortestRoute2(){
+
+        setUpStage1();
+
+        String pathExpected [] = new String[]{
+                "WATERLOO",
+                "WESTMINSTER",
+                "GREEN PARK",
+                "OXFORD CIRCUS",
+                "WARREN STREET"};
+
+        int numStationExpected = pathExpected.length;
+
+        String from = "WATERLOO";
+        String to = "WARREN STREET";
+
+        Path<Station> path = controller.findShortestRoute(from, to);
+
+        for(int i = 0; i < path.getPath().size(); i++){
+            assertEquals(pathExpected[i], path.getPath().get(i).getName());
+        }
+
+        assertEquals(path.getDistance(), numStationExpected);
+
+    }
+
+    @Test
+    public void testFindShortestRoute3(){
+
+        setUpStage1();
+
+        String pathExpected [] = new String[]{
+                "OLD STREET",
+                "MOORGATE",
+                "BANK",
+                "WATERLOO",
+                "WESTMINSTER",
+                "GREEN PARK",
+                "VICTORIA",
+                "SLOANE SQUARE",
+                "SOUTH KENSINGTON",
+                "GLOUCESTER ROAD",
+                "EARLS COURT",
+                "WEST KENSINGTON"
+        };
+
+        int numStationExpected = pathExpected.length;
+
+        String from = "OLD STREET";
+        String to = "WEST KENSINGTON";
+
+        Path<Station> path = controller.findShortestRoute(from, to);
+
+        for(int i = 0; i < path.getPath().size(); i++){
+            assertEquals(pathExpected[i], path.getPath().get(i).getName());
+        }
+
+        assertEquals(path.getDistance(), numStationExpected);
+
+    }
+
+    @Test
+    public void testFindShortestRoute4(){
+
+        setUpStage1();
+
+        String from = "CAMDEN TOWN";
+        String to = "WEST KENSINGTON";
+
+        String pathExpected [] = new String[]{
+                "CAMDEN TOWN",
+                "MORNINGTON CRESCENT",
+                "EUSTON (CX)",
+                "WARREN STREET",
+                "OXFORD CIRCUS",
+                "GREEN PARK",
+                "VICTORIA",
+                "SLOANE SQUARE",
+                "SOUTH KENSINGTON",
+                "GLOUCESTER ROAD",
+                "EARLS COURT",
+                "WEST KENSINGTON"
+        };
+
+        int numStationExpected = pathExpected.length;
+
+        Path<Station> path = controller.findShortestRoute(from, to);
+
+        for(int i = 0; i < path.getPath().size(); i++){
+            assertEquals(pathExpected[i], path.getPath().get(i).getName());
+        }
+
+        assertEquals(path.getDistance(), numStationExpected);
+
+    }
+
+    @Test
+    public void testFindShortestRoute5(){
+
+        setUpStage1();
+
+        String from = "WARWICK AVENUE";
+        String to = "TEMPLE";
+
+
+        String pathExpected [] = new String[]{
+                "WARWICK AVENUE",
+                "PADDINGTON",
+                "EDGWARE ROAD",
+                "MARYLEBONE",
+                "BAKER STREET",
+                "BOND STREET",
+                "GREEN PARK",
+                "WESTMINSTER",
+                "EMBANKMENT",
+                "TEMPLE"
+        };
+
+        int numStationExpected = pathExpected.length;
+
+        Path<Station> path = controller.findShortestRoute(from, to);
+
+        for(int i = 0; i < path.getPath().size(); i++){
+            assertEquals(pathExpected[i], path.getPath().get(i).getName());
+        }
+
+        assertEquals(path.getDistance(), numStationExpected);
+
+    }
 
 }

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import java.awt.Desktop;
 
@@ -121,7 +122,7 @@ public class ViewController implements Initializable {
 
     }
 
-    public void findShortestPath(){
+    public void findFastestRoute(){
 
         String from = searchBarFrom.getText();
         String to = searchBarTo.getText();
@@ -137,6 +138,25 @@ public class ViewController implements Initializable {
         route.setItems(routeList);
 
         travelTime.setText(path.getDistance() + " min");
+
+    }
+
+    public void findShortestRoute(){
+
+        String from = searchBarFrom.getText();
+        String to = searchBarTo.getText();
+
+        if(to.isEmpty() || from.isEmpty()) return;
+
+        Path<Station> path = controller.findShortestRoute(from, to);
+
+        ObservableList<String> routeList = FXCollections.observableArrayList();
+
+        path.getPath().forEach(station -> routeList.add(station.getName()));
+
+        route.setItems(routeList);
+
+        travelTime.setText(((int) path.getDistance()) + " stations");
 
     }
 

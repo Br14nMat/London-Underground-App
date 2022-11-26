@@ -3,13 +3,14 @@ package com.brian.london_underground.model;
 import com.brian.london_underground.graph.AdjacencyListGraph;
 import com.brian.london_underground.graph.IGraph;
 import com.brian.london_underground.graph.Path;
+import com.brian.london_underground.graph.Vertex;
 
 import java.awt.*;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.List;
 
 public class LondonUndergroundManager {
 
@@ -30,10 +31,27 @@ public class LondonUndergroundManager {
 
     public Path<Station> findFastestRoute(String from, String to){
 
-        graph.BFS(stations.get(from));
-        System.out.println(graph.searchVertex(stations.get(to)).getD());
-
         return graph.dijkstra(stations.get(from), stations.get(to));
+    }
+
+    public Path<Station> findShortestRoute(String from, String to){
+
+       graph.BFS(stations.get(from));
+
+        List<Station> shortestPath = new ArrayList<>();
+
+        Vertex<Station> current = graph.searchVertex(stations.get(to));
+        double numStations = current.getD() + 1;
+
+        while (current != null){
+            shortestPath.add(current.getElement());
+            current = current.getPredecessor();
+        }
+
+        Collections.reverse(shortestPath);
+
+        return new Path<>(shortestPath, numStations);
+
     }
 
     public void loadStations(){
