@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brian.london_underground.ui.ViewController">
+   <children>
+      <TextField fx:id="searchBarFrom" focusTraversable="false" layoutX="82.0" layoutY="79.0" prefHeight="31.0" prefWidth="177.0" promptText="from" />
+      <Button focusTraversable="false" layoutX="525.0" layoutY="79.0" mnemonicParsing="false" onAction="#findShortestPath" prefHeight="31.0" prefWidth="86.0" text="Find route">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TableView fx:id="tableFrom" focusTraversable="false" layoutX="82.0" layoutY="134.0" prefHeight="491.0" prefWidth="177.0">
+        <columns>
+          <TableColumn fx:id="tableColFrom" prefWidth="176.0" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchBarTo" focusTraversable="false" layoutX="293.0" layoutY="79.0" prefHeight="31.0" prefWidth="177.0" promptText="to" />
+      <TableView fx:id="tableTo" focusTraversable="false" layoutX="293.0" layoutY="134.0" prefHeight="491.0" prefWidth="177.0">
+        <columns>
+          <TableColumn fx:id="tableColTo" prefWidth="176.0" />
+        </columns>
+      </TableView>
+      <ListView fx:id="route" focusTraversable="false" layoutX="710.0" layoutY="134.0" prefHeight="416.0" prefWidth="200.0" />
+      <ImageView fx:id="logo" fitHeight="229.0" fitWidth="240.0" layoutX="1005.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+      <Label focusTraversable="false" layoutX="763.0" layoutY="79.0" prefHeight="41.0" prefWidth="95.0" text="Route">
+         <font>
+            <Font name="Berlin Sans FB" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="travelTime" editable="false" focusTraversable="false" layoutX="710.0" layoutY="581.0" prefHeight="41.0" prefWidth="200.0" promptText="Travel time">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <Button focusTraversable="false" layoutX="1070.0" layoutY="380.0" mnemonicParsing="false" onAction="#showMap" prefHeight="41.0" prefWidth="95.0" text="Show map">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="964.0" layoutY="301.0" text="London Underground">
+         <font>
+            <Font name="Berlin Sans FB" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
