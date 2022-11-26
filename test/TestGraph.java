@@ -330,10 +330,6 @@ public class TestGraph {
 
         verifyPath(path, pathExpected, distanceExpected);
 
-        graph.BFS("S");
-
-        System.out.println(graph.searchVertex("T").getColor().toString());
-
         //---------------------------------------------------
 
         graph = new AdjacencyMatrixGraph<>(true);
